@@ -1,8 +1,15 @@
 import React from 'react'
 import ReactDom from 'react-dom'
+import logo from './images/logo.png'
+import './search.less'
 
 const Search = () => {
-  return <div>Search Text</div>
+  return (
+    <div className='search-text'>
+      Search Text
+      <img src={logo} />
+    </div>
+  )
 }
 
 ReactDom.render(<Search />, document.getElementById('root'))
