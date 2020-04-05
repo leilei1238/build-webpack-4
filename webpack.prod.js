@@ -24,11 +24,52 @@ module.exports = {
       },
       {
         test: /\.css?$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                require('autoprefixer')({
+                  overrideBrowserslist: ['last 2 version', '>1%', 'iOS 7'],
+                }),
+              ],
+            },
+          },
+          {
+            loader: 'px2rem-loader',
+            options: {
+              remUnit: 75,
+              remPrecision: 8,
+            },
+          },
+        ],
       },
       {
         test: /\.less?$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'less-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                require('autoprefixer')({
+                  overrideBrowserslist: ['last 2 version', '>1%', 'iOS 7'],
+                }),
+              ],
+            },
+          },
+          {
+            loader: 'px2rem-loader',
+            options: {
+              remUnit: 75,
+              remPrecision: 8,
+            },
+          },
+        ],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
