@@ -6,7 +6,7 @@ import './search.less'
 const Search = () => {
   return (
     <div className='search-text'>
-      Search Text
+      Search Text1234
       <img src={logo} />
     </div>
   )
