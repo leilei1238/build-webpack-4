@@ -22,6 +22,7 @@
     "cssnano": "^4.1.10",
     "file-loader": "^6.0.0",
     "glob": "^7.1.6",
+    "html-webpack-externals-plugin": "^3.8.0",
     "html-webpack-plugin": "^4.0.4",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
@@ -34,7 +35,7 @@
     "url-loader": "^4.0.0"
   },
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.dev.js --open",
+    "dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js "
   },
   "repository": {
