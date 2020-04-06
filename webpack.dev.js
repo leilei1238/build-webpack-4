@@ -1,5 +1,3 @@
-'use strict'
-
 const path = require('path')
 const glob = require('glob')
 const webpack = require('webpack')
@@ -13,7 +11,7 @@ const setMPA = () => {
   const entryFiles = glob.sync(path.join(__dirname, 'src/*/index.js'))
   Object.keys(entryFiles).map((index) => {
     const entryFile = entryFiles[index]
-    //"/Users/zhanglei/project/webpack-pro/src/index/index.js"
+    // "/Users/zhanglei/project/webpack-pro/src/index/index.js"
     const match = entryFile.match(/src\/(.+)\/index\.js/)
     const pageName = match && match[1]
     entry[pageName] = entryFile
@@ -59,7 +57,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        use: 'babel-loader',
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.css?$/,

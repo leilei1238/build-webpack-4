@@ -56,7 +56,8 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        use: 'babel-loader',
+        exclude: /node_modules/,
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.css?$/,
@@ -140,19 +141,22 @@ module.exports = {
       cssProcessor: require('cssnano'),
     }),
     new CleanWebpackPlugin(),
-    new HtmlWebpackExternalsPlugin({
-      externals: [
-        {
-          module: 'react',
-          entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
-          global: 'React',
-        },
-        {
-          module: 'react-dom',
-          entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
-          global: 'ReactDOM',
-        },
-      ],
-    }),
   ].concat(htmlWebpackPlugin),
+  // optimization: {
+  //   splitChunks: {
+  //     minSize: 0,
+  //     cacheGroups: {
+  //       // vendor: {
+  //       //   test: /(react|react-dom)/,
+  //       //   name: 'vendor',
+  //       //   chunks: 'all',
+  //       // },
+  //       commons: {
+  //         name: 'commons',
+  //         chunks: 'all',
+  //         minChunks: 2,
+  //       },
+  //     },
+  //   },
+  // },
 }

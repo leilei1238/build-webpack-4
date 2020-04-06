@@ -1,1 +1,3 @@
-export const HelloWorld = () => 'hello world'
+const HelloWorld = () => 'hello world'
+
+export default HelloWorld

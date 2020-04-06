@@ -1,3 +1,4 @@
-import { HelloWorld } from './helloWorld'
+import HelloWorld from './HelloWorld'
+import common from '../../common'
 
-document.write(HelloWorld())
+document.write(HelloWorld(), common())
