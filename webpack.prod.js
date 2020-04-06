@@ -9,7 +9,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
   entry: {
     index: './src/index/index.js',
-    search: './src/search/search.js',
+    search: './src/search/index.js',
   },
   output: {
     filename: '[name]_[chunkhash:8].js',
