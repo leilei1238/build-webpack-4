@@ -1,13 +1,13 @@
-import React from 'react'
-import ReactDom from 'react-dom'
-import largeNumber from 'lei-large-number'
-import common from '../../common'
-import './search.less'
-import logo from './images/logo.png'
+const React = require('react')
+const logo = require('./images/logo.png')
+const largeNumber = require('lei-large-number')
+
+require('./search.less')
 
 class Search extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super(...arguments)
+
     this.state = {
       Text: null,
     }
@@ -21,15 +21,15 @@ class Search extends React.Component {
   }
   render() {
     const { Text } = this.state
+    const addResult = largeNumber(999, 1)
     return (
       <div className='search-text'>
-        {largeNumber(999, 1)}
-        Search Text1234
         {Text ? <Text /> : null}
-        {common()}
+        {addResult}
+        搜索文字的内容
         <img src={logo} alt='' onClick={this.loadComponent.bind(this)} />
       </div>
     )
   }
 }
-ReactDom.render(<Search />, document.getElementById('root'))
+module.exports = <Search />

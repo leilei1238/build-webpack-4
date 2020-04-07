@@ -11,14 +11,14 @@ const setMPA = () => {
   const entry = {}
   const htmlWebpackPlugin = []
 
-  const entryFiles = glob.sync(path.join(__dirname, 'src/*/index.js'))
-  Object.keys(entryFiles).map((index) => {
+  const entryFiles = glob.sync(path.join(__dirname, 'src/*/index-server.js'))
+  Object.keys(entryFiles).forEach((index) => {
     const entryFile = entryFiles[index]
     // "/Users/zhanglei/project/webpack-pro/src/index/index.js"
-    const match = entryFile.match(/src\/(.+)\/index\.js/)
+    const match = entryFile.match(/src\/(.+)\/index-server\.js/)
     const pageName = match && match[1]
+    if (!pageName) return
     entry[pageName] = entryFile
-
     htmlWebpackPlugin.push(
       new HtmlWebpackPlugin({
         template: path.join(__dirname, `src/${pageName}/index.html`),
@@ -47,8 +47,9 @@ const { entry, htmlWebpackPlugin } = setMPA()
 module.exports = {
   entry,
   output: {
-    filename: '[name]_[chunkhash:8].js',
+    filename: '[name]-server.js',
     path: path.join(__dirname, 'dist'),
+    libraryTarget: 'umd',
   },
   mode: 'production',
   module: {
@@ -114,6 +115,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name]_[hash:8].[ext]',
+              esModule: false,
             },
           },
         ],
@@ -125,6 +127,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name]_[hash:8].[ext]',
+              esModule: false,
             },
           },
         ],

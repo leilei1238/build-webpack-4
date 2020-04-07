@@ -1,3 +1,1 @@
-const common = () => 'common function'
-
-export default common
+export default () => 'common function'
