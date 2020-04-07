@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const setMPA = () => {
   const entry = {}
@@ -140,6 +141,19 @@ module.exports = {
       cssProcessor: cssnano,
     }),
     new CleanWebpackPlugin(),
+    new FriendlyErrorsWebpackPlugin(),
+    function () {
+      this.hooks.done.tap('done', (stats) => {
+        if (
+          stats.compilation.errors &&
+          stats.compilation.errors.length &&
+          process.argv.indexOf('--watch') === -1
+        ) {
+          console.log('build error')
+          process.exit(1)
+        }
+      })
+    },
   ].concat(htmlWebpackPlugin),
   // optimization: {
   //   splitChunks: {
@@ -158,4 +172,5 @@ module.exports = {
   //     },
   //   },
   // },
+  stats: 'errors-only',
 }

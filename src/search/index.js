@@ -24,7 +24,7 @@ class Search extends React.Component {
     return (
       <div className='search-text'>
         {largeNumber(999, 1)}
-        Search Text1234
+        Search Text
         {Text ? <Text /> : null}
         {common()}
         <img src={logo} alt='' onClick={this.loadComponent.bind(this)} />
