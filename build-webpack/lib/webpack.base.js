@@ -6,21 +6,24 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
+const projectRoot = process.cwd() // 会切换到template目录下
+
 const setMPA = () => {
   const entry = {}
   const htmlWebpackPlugin = []
 
-  const entryFiles = glob.sync(path.join(__dirname, '../../src/*/index.js'))
-  Object.keys(entryFiles).forEach((index) => {
+  const entryFiles = glob.sync(path.join(projectRoot, './src/*/index.js'))
+  console.log(entryFiles)
+  Object.keys(entryFiles).map((index) => {
     const entryFile = entryFiles[index]
     // "/Users/zhanglei/project/webpack-pro/src/index/index.js"
     const match = entryFile.match(/src\/(.+)\/index\.js/)
     const pageName = match && match[1]
     entry[pageName] = entryFile
 
-    htmlWebpackPlugin.push(
+    return htmlWebpackPlugin.push(
       new HtmlWebpackPlugin({
-        template: path.join(__dirname, `../../src/${pageName}/index.html`),
+        template: path.join(projectRoot, `./src/${pageName}/index.html`),
         filename: `${pageName}.html`,
         chunks: [pageName],
         inject: true,
@@ -47,7 +50,7 @@ module.exports = {
   entry,
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, 'dist'),
+    path: path.join(projectRoot, 'dist'),
   },
   module: {
     rules: [
@@ -137,14 +140,14 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new FriendlyErrorsWebpackPlugin(),
-    function () {
+    function doneErrorWebpackPlugin() {
       this.hooks.done.tap('done', (stats) => {
         if (
           stats.compilation.errors &&
           stats.compilation.errors.length &&
           process.argv.indexOf('--watch') === -1
         ) {
-          console.log('build error')
+          console.log('build error') //eslint-disable-line
           process.exit(1)
         }
       })

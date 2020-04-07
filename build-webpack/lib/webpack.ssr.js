@@ -1,6 +1,6 @@
-const merge = require('webpack-merge')
-const baseConfig = require('./webpack.base')
-const path = require('path')
+const merge = require('webpack-merge');
+const path = require('path');
+const baseConfig = require('./webpack.base');
 
 const ssrConfig = {
   mode: 'production',
@@ -21,6 +21,6 @@ const ssrConfig = {
       },
     ],
   },
-}
+};
 
-module.exports = merge(baseConfig, ssrConfig)
+module.exports = merge(baseConfig, ssrConfig);
