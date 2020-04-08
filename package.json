@@ -13,7 +13,9 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
+    "expect.js": "^0.3.1",
     "lib-flexible": "^0.3.2",
+    "mocha": "^7.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "rimraf": "^3.0.2"
