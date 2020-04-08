@@ -1,6 +1,5 @@
 const React = require('react')
 const logo = require('./images/logo.png')
-const largeNumber = require('lei-large-number')
 
 require('./search.less')
 
@@ -21,7 +20,6 @@ class Search extends React.Component {
   }
   render() {
     const { Text } = this.state
-    const addResult = largeNumber(999, 1)
     return (
       <div className='search-text'>
         {Text ? <Text /> : null}

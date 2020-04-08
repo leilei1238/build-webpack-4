@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import largeNumber from 'lei-large-number'
 import common from '../../common'
 import './search.less'
 import logo from './images/logo.png'
@@ -23,7 +22,6 @@ class Search extends React.Component {
     const { Text } = this.state
     return (
       <div className='search-text'>
-        {largeNumber(999, 1)}
         Search Text
         {Text ? <Text /> : null}
         {common()}
