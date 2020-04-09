@@ -1,16 +1,16 @@
-language: nodejs
+language: node_js
 
-sudo:false
+sudo: false
 
 cache:
-  apt:true
+  apt: true
   directories:
     - node_modules
-    
+
 node_js: stable
 
 before_script:
   - npm install
-  
+
 script:
   - npm test
