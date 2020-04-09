@@ -1,0 +1,16 @@
+language: nodejs
+
+sudo:false
+
+cache:
+  apt:true
+  directories:
+    - node_modules
+    
+node_js: stable
+
+before_script:
+  - npm install
+  
+script:
+  - npm test
