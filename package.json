@@ -18,9 +18,11 @@
     "istanbul": "^0.4.5",
     "lib-flexible": "^0.3.2",
     "mocha": "^7.1.1",
+    "precommit": "^1.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "validate-commit-msg": "^2.14.0"
   },
   "dependencies": {
     "@babel/core": "^7.9.0",
@@ -60,9 +62,15 @@
     "build": "webpack --config webpack.prod.js ",
     "build:ssr": "webpack --config webpack.ssr.js",
     "lint": "eslint ./lib --fix",
-    "test": "istanbul cover ./node_modules/.bin/_mocha"
+    "test": "istanbul cover ./node_modules/.bin/_mocha",
+    "commitmsg": "validate-commit-msg"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "precommit": {
+    "tasks": [
+      "commitmsg"
+    ]
+  }
 }
